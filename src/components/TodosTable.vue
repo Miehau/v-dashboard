@@ -1,11 +1,19 @@
 <template>
   <div>
+    <v-text-field
+      v-model="search"
+      append-icon="search"
+      label="Search"
+      single-line
+      hide-details
+    ></v-text-field>
     <v-data-table
       :headers="fields"
       :items="tasks"
       :items-per-page="5"
       :loading="!tasks.length"
       class="elevation-1"
+      :search="search"
     ></v-data-table>
   </div>
 </template>
@@ -21,6 +29,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       isBusy: false,
       fields: [
         { text: "Name", value: "name" },

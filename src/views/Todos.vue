@@ -1,7 +1,16 @@
 <template>
   <div class="about">
-    <TodosTable :tasks="items" />
-    <TodosForm @task-added="addNewTask" />
+    <v-container fluid>
+      <v-row>
+        <v-col cols="9">
+          <TodosTable :tasks="items" />
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col>
+          <TodosForm @task-added="addNewTask" />
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -23,7 +32,10 @@ export default {
     };
   },
   methods: {
-    addNewTask() {}
+    addNewTask(task) {
+      console.log(task);
+      this.items.push(task);
+    }
   },
   mounted() {
     console.log("Created moment!");

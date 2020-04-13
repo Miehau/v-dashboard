@@ -1,28 +1,26 @@
 <template>
   <div>
-    <!-- <b-form @submit="onSubmit">
-      <b-form-group id="name-group-1" label="Task:" v-if="show" label-for="task-name-input">
-        <b-form-input
-          id="task-name-input"
-          v-model="form.taskName"
-          placeholder="What do you want to do?"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group
-        id="description-group-1"
-        label="Description:"
-        label-for="task-description-input"
-      >
-        <b-form-input
-          id="task-description-input"
-          v-model="form.taskDescription"
-          placeholder="Details ...?"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Add</b-button>
-    </b-form> -->
+    <v-form>
+      <v-container>
+        <v-row>
+          <v-text-field
+            v-model="form.taskName"
+            label="What do you want to do?"
+            required
+          ></v-text-field>
+        </v-row>
+        <v-row>
+          <v-text-field
+            v-model="form.taskDescription"
+            label="Details ...?"
+            required
+          ></v-text-field>
+        </v-row>
+        <v-row>
+          <v-btn class="mr-4" @click="submit">submit</v-btn>
+        </v-row>
+      </v-container>
+    </v-form>
   </div>
 </template>
 
@@ -38,10 +36,13 @@ export default {
     };
   },
   methods: {
-    onSubmit(e) {
+    submit(e) {
       e.preventDefault();
-      alert(JSON.stringify(this.form));
-      this.$emit("task-added", this.form);
+      let task = {
+        name: this.form.taskName,
+        description: this.form.taskDescription
+      };
+      this.$emit("task-added", task);
       this.form.taskName = "";
       this.form.taskDescription = "";
       this.show = false;
