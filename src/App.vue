@@ -1,33 +1,60 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/todos">Todos</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app color="primary">
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+      <div>
+        <router-link :to="{name: 'Home'}">
+          <v-btn color="primary" depressed>
+            <v-icon>fas fa-braille</v-icon>
+          </v-btn>
+        </router-link>
+      </div>
+      <div>
+        <router-link :to="{name: 'About'}">
+          <v-btn color="primary" depressed>About</v-btn>
+        </router-link>
+      </div>
+      <div>
+        <router-link :to="{name: 'Todos'}">
+          <v-btn color="primary" depressed>
+            <v-icon>fas fa-list-ul</v-icon>
+          </v-btn>
+        </router-link>
+      </div>
+
+      <v-spacer></v-spacer>
+    </v-app-bar>
+
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data: () => ({
+    //
+  })
+};
+</script>
