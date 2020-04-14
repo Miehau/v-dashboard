@@ -2,15 +2,15 @@
   <div>
     <v-text-field
       v-model="search"
-      append-icon="search"
+      append-icon="fas fa-search"
       label="Search"
       single-line
       hide-details
     ></v-text-field>
     <v-data-table
       :headers="fields"
-      :items="tasks"
-      :items-per-page="5"
+      :items="tableItems"
+      :items-per-page="30"
       :loading="!tasks.length"
       class="elevation-1"
       :search="search"
@@ -38,6 +38,11 @@ export default {
         { text: "Actions", value: "actions" }
       ]
     };
+  },
+  computed: {
+    tableItems() {
+      return this.tasks.slice();
+    }
   },
   methods: {},
   created() {

@@ -33,18 +33,23 @@ export default {
   },
   methods: {
     addNewTask(task) {
-      console.log(task);
-      this.items.push(task);
+      TodosService.add(task)
+        .then(response => {
+          this.items.push(response.data.data[0].attributes.task);
+        })
+        .catch(error => console.log(error));
     }
   },
   mounted() {
     console.log("Created moment!");
-    TodosService.getAllTodos().then(response => {
-      console.log(response.data);
-      response.data.data.forEach(element => {
-        this.items.push(element.attributes.task);
-      });
-    });
+    TodosService.getAllTodos()
+      .then(response => {
+        response.data.data.forEach(element => {
+          this.items.push(element.attributes.task);
+        });
+        console.log(this.items);
+      })
+      .catch(error => console.log(error));
   }
 };
 </script>
