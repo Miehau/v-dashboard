@@ -6,7 +6,7 @@ const apiClient = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-  }
+  },
 });
 
 export default {
@@ -15,5 +15,11 @@ export default {
   },
   add(task) {
     return apiClient.post('/tasks', task);
+  },
+  update(task) {
+    return apiClient.put(`/tasks/${task.id}`, task);
+  },
+  delete(taskId) {
+    return apiClient.delete(`/tasks/${taskId}`);
   },
 };

@@ -23,7 +23,8 @@
       <div>
         <router-link :to="{name: 'Home'}">
           <v-btn color="primary" depressed>
-            <v-icon>fas fa-braille</v-icon>
+            <!-- <v-icon>fas fa-braille</v-icon> -->
+            Home
           </v-btn>
         </router-link>
       </div>
@@ -35,7 +36,8 @@
       <div>
         <router-link :to="{name: 'Todos'}">
           <v-btn color="primary" depressed>
-            <v-icon>fas fa-list-ul</v-icon>
+            <!-- <v-icon>fas fa-list-ul</v-icon> -->
+            Todos
           </v-btn>
         </router-link>
       </div>

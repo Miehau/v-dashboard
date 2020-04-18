@@ -1,12 +1,13 @@
 <template>
-  <div class="about">
+  <div>
     <v-container fluid>
       <v-row>
-        <v-col cols="9">
-          <TodosTable :tasks="items" />
+        <v-col class="d-none d-sm-flex inline-flex"></v-col>
+        <v-col xs="12" sm="12" lg="7">
+          <ListComponent :items="items" />
         </v-col>
         <v-divider vertical></v-divider>
-        <v-col>
+        <v-col class="d-none d-sm-flex inline-flex">
           <TodosForm @task-added="addNewTask" />
         </v-col>
       </v-row>
@@ -16,15 +17,15 @@
 
 <script>
 // @ is an alias to /src
-import TodosTable from "@/components/TodosTable.vue";
 import TodosForm from "@/components/TodosForm.vue";
 import TodosService from "@/services/TodosService.js";
+import ListComponent from "@/components/ListComponent.vue";
 
 export default {
   name: "Todos",
   components: {
-    TodosTable,
-    TodosForm
+    TodosForm,
+    ListComponent
   },
   data() {
     return {
@@ -33,6 +34,9 @@ export default {
   },
   methods: {
     addNewTask(task) {
+      if (!task.name) {
+        return;
+      }
       TodosService.add(task)
         .then(response => {
           this.items.push(response.data.data[0].attributes.task);

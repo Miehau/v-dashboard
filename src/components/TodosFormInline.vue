@@ -1,28 +1,31 @@
 <template>
-  <div floating>
+  <div>
     <v-form>
       <v-container>
         <v-row>
-          <v-text-field v-model="form.taskName" label="What do you want to do?" required></v-text-field>
-        </v-row>
-        <v-row>
-          <v-text-field v-model="form.taskDescription" label="Details ...?" required></v-text-field>
-        </v-row>
-        <v-row>
-          <v-combobox v-model="form.tags" chips clearable label="Tags" :items="previouslyUsedTags" multiple solo>
-            <template v-slot:selection="{ attrs, item, select, selected }">
-              <v-chip
-                v-bind="attrs"
-                :input-value="selected"
-                close
-                @click="remove(item)"
-              >
-                <strong>{{ item }}</strong>
-              </v-chip>
-            </template>
-          </v-combobox>
-        </v-row>
-        <v-row>
+          <v-col>
+            <v-text-field v-model="form.taskName" label="What do you want to do?" required></v-text-field>
+          </v-col>
+          <v-col>
+            <v-text-field v-model="form.taskDescription" label="Details ...?" required></v-text-field>
+          </v-col>
+          <v-col>
+            <v-combobox
+              v-model="form.tags"
+              chips
+              clearable
+              label="Tags"
+              :items="previouslyUsedTags"
+              multiple
+              solo
+            >
+              <template v-slot:selection="{ attrs, item, select, selected }">
+                <v-chip v-bind="attrs" :input-value="selected" close @click="remove(item)">
+                  <strong>{{ item }}</strong>
+                </v-chip>
+              </template>
+            </v-combobox>
+          </v-col>
           <v-btn class="mr-4" @click="submit">submit</v-btn>
         </v-row>
       </v-container>
