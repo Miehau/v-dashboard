@@ -34,10 +34,10 @@
         </router-link>
       </div>
       <div>
-        <router-link :to="{name: 'Todos'}">
+        <router-link :to="{name: 'Lists'}">
           <v-btn color="primary" depressed>
             <!-- <v-icon>fas fa-list-ul</v-icon> -->
-            Todos
+            Lists
           </v-btn>
         </router-link>
       </div>

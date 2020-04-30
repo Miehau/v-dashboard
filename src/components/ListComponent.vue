@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     markDone(item) {
-      let updatedItem = item;
       let editedIndex = this.items.indexOf(item);
+      let updatedItem = Object.assign({}, item);
       updatedItem.done = !updatedItem.done;
       TodosService.update(updatedItem)
         .then(() => {
