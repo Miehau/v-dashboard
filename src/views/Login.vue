@@ -18,6 +18,12 @@
               <v-btn @click.prevent="login()">Login</v-btn>
             </v-form>
           </v-card>
+          <v-card>
+            <div class="container unauthenticated">
+              With Google:
+              <a href="http://localhost:9090/oauth2/authorize/google?redirect_uri=http://localhost:8081/oauth2/redirect">click here</a>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -25,6 +31,7 @@
 </template>
 
 <script>
+import LoginService from "@/services/LoginService.js";
 export default {
   data: () => ({
     form: {
@@ -37,6 +44,7 @@ export default {
     login() {
       console.log(this.form);
       this.form = {};
+      LoginService.login().then(resp => console.log(resp));
     }
   }
 };
