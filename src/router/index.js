@@ -25,22 +25,9 @@ const routes = [
     component: () => import('../views/Lists.vue'),
   },
   {
-    path: '/login',
+    path: '/aaa',
     name: 'Login',
     component: () => import('../views/Login.vue'),
-  },
-  {
-    path: '/dupa',
-    name: 'Redirect',
-    redirect: to => {
-      const { hash, params, query } = to;
-      console.log(hash);
-      console.log(params);
-      console.log(query);
-      console.log(to);
-      localStorage.setItem("token", params["token"])
-      return '/';
-    }
   },
   {
     path: '*',
@@ -54,17 +41,5 @@ const router = new VueRouter({
   routes,
 });
 
-
-router.beforeEach((to, from, next) => {
-  const publicPages = ['/login'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user') || localStorage.getItem('token');
-
-  if (authRequired && !loggedIn) {
-    return next('/login');
-  }
-
-  next();
-});
 
 export default router;

@@ -21,7 +21,7 @@
           <v-card>
             <div class="container unauthenticated">
               With Google:
-              <a href="http://localhost:9090/oauth2/authorize/google?redirect_uri=http://localhost:8081/oauth2/redirect">click here</a>
+              <a href="http://localhost:9090/oauth2/authorize/google">click here</a>
             </div>
           </v-card>
         </v-col>
